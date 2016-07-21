@@ -233,7 +233,7 @@ namespace Swashbuckle.Demo
         {
             var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
             var commentsFileName = Assembly.GetExecutingAssembly().GetName().Name + ".XML";
-            return Path.Combine(baseDirectory, commentsFileName);
+            return Path.Combine(baseDirectory, "bin", commentsFileName);
         }
     }
 }
