@@ -1,10 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web.Http;
 using Swashbuckle.Demo.Models;
+using Swashbuckle.Swagger.Annotations;
 
 namespace Swashbuckle.Demo.Controllers
 {
+    /// <summary>
+    /// Everythig about Student
+    /// </summary>
     public class StudentController : ApiController
     {
         private readonly List<Student> _students;
@@ -25,11 +30,21 @@ namespace Swashbuckle.Demo.Controllers
             };
         }
 
+        /// <summary>
+        /// Returns the list of students registered.
+        /// </summary>
+        [SwaggerResponse(HttpStatusCode.OK, "List of registered students")]
         public IHttpActionResult Get()
         {
             return Ok(_students);
         }
 
+        /// <summary>
+        /// Returns the request student, if found.
+        /// </summary>
+        /// <param name="id">The ID</param>
+        [SwaggerResponse(HttpStatusCode.OK, "The found student obj")]
+        [SwaggerResponse(HttpStatusCode.NotFound, "No student found for the provided ID")]
         public IHttpActionResult Get(int id)
         {
             var student = _students.FirstOrDefault(st => st.Id == id);
@@ -39,6 +54,11 @@ namespace Swashbuckle.Demo.Controllers
             return Ok(student);
         }
 
+        /// <summary>
+        /// It does nothing!!!
+        /// </summary>
+        /// <param name="value">The Student to create</param>
+        [SwaggerResponse(HttpStatusCode.OK, "All is good")]
         public IHttpActionResult Post([FromBody]Student value)
         {
             return Ok();
