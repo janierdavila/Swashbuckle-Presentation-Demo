@@ -8,7 +8,7 @@ using Swashbuckle.Swagger.Annotations;
 namespace Swashbuckle.Demo.Controllers
 {
     /// <summary>
-    /// Everythig about Student
+    /// Everything about Student
     /// </summary>
     public class StudentController : ApiController
     {
